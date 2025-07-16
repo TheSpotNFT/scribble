@@ -1,4 +1,4 @@
-export default function IRLPage() {
+export default function DIGIPage() {
     return (
         <div>
             <h1 className="text-3xl font-bold">DIGI Collection</h1>
