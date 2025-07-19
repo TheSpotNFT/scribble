@@ -9,24 +9,22 @@ type Props = {
 export default function ThumbnailCarousel({ images, currentIndex, onSelect }: Props) {
     const scrollRef = useRef<HTMLDivElement>(null);
     const scrollInterval = useRef<NodeJS.Timeout | null>(null);
-    const [isScrollable, setIsScrollable] = useState(false);
-
-    // Check scrollability
-    useEffect(() => {
-        const el = scrollRef.current;
-        if (el) {
-            setIsScrollable(el.scrollWidth > el.clientWidth);
-        }
-    }, [images]);
 
     const startScrolling = (direction: 'left' | 'right') => {
         const container = scrollRef.current;
         if (!container) return;
 
-        const scrollAmount = direction === 'left' ? -2 : 2;
+        const scrollAmount = direction === 'left' ? -5 : 5;
 
         scrollInterval.current = setInterval(() => {
-            container.scrollBy({ left: scrollAmount });
+            const maxScrollLeft = container.scrollWidth - container.clientWidth;
+
+            if (
+                (direction === 'left' && container.scrollLeft > 0) ||
+                (direction === 'right' && container.scrollLeft < maxScrollLeft)
+            ) {
+                container.scrollBy({ left: scrollAmount });
+            }
         }, 10);
     };
 
@@ -57,22 +55,22 @@ export default function ThumbnailCarousel({ images, currentIndex, onSelect }: Pr
                 {/* Scrollable Thumbnails */}
                 <div
                     ref={scrollRef}
-                    className={`flex gap-3 overflow-x-auto scrollbar-hidden transition-all duration-300 ${isScrollable ? 'justify-start' : 'justify-center'
-                        }`}
+                    className="flex overflow-x-auto scrollbar-hidden min-w-full"
                 >
-                    {images.map((src, idx) => (
-                        <img
-                            key={idx}
-                            src={src}
-                            alt={`Thumbnail ${idx + 1}`}
-                            onClick={() => onSelect(idx)}
-                            className={`h-24 sm:h-36 w-auto rounded-md cursor-pointer border transition-all duration-150
-    ${idx === currentIndex
-                                    ? 'border-amber-600 shadow-md'
-                                    : 'opacity-70 hover:opacity-100 border-transparent'}`}
-                        />
-
-                    ))}
+                    <div className="flex gap-3 min-w-max px-2">
+                        {images.map((src, idx) => (
+                            <img
+                                key={idx}
+                                src={src}
+                                alt={`Thumbnail ${idx + 1}`}
+                                onClick={() => onSelect(idx)}
+                                className={`h-24 sm:h-36 w-auto rounded-md cursor-pointer border transition-all duration-150 ${idx === currentIndex
+                                        ? 'border-amber-600 shadow-md'
+                                        : 'opacity-70 hover:opacity-100 border-transparent'
+                                    }`}
+                            />
+                        ))}
+                    </div>
                 </div>
             </div>
         </div>
