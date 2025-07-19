@@ -13,12 +13,12 @@ export default function Home() {
     return (
         <div className="relative w-full h-screen overflow-hidden bg-white">
             {/* Fullscreen image instead of background */}
-            <img
+            <div className='border-2 border-black'><img
                 src={currentImage}
                 alt={`Artwork ${currentImageIndex + 1}`}
-                className="w-full h-full object-contain absolute inset-0 z-0 pointer-events-none select-none"
+                className="w-full h-full object-contain absolute pt-30 inset-0 z-0 pointer-events-none select-none"
                 style={{ paddingBottom: '10rem' }} // ~160px for space above carousel
-            />
+            /></div>
 
             {/* Sidebar */}
             <CollectionSidebar
@@ -35,7 +35,10 @@ export default function Home() {
                     href={salvorLink}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-full py-3 px-6 rounded text-sm tracking-wide transition-all duration-150 bg-zinc-500 hover:bg-black hover:text-gray-300"
+                    className={`
+              whitespace-nowrap px-4 py-2 text-sm rounded-full transition-all duration-150 hover:bg-amber-300 bg-zinc-200
+             
+            `}
                 >
                     View on Salvor
                 </a>
