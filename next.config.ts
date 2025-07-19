@@ -2,7 +2,10 @@ import type { NextConfig } from 'next';
 
 const nextConfig: NextConfig = {
   reactStrictMode: true,
-  output: 'export', // 👈 Add this line for Netlify static export
+  output: 'export',
+  images: {
+    unoptimized: true, // 👈 Disable image optimization
+  },
 };
 
 export default nextConfig;
