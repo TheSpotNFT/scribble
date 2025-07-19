@@ -30,7 +30,7 @@ export default function Home() {
             />
 
             {/* View on Salvor button */}
-            <div className="absolute bottom-60 right-12 text-black text-2xl z-20">
+            <div className="absolute bottom-36 right-12 text-black text-2xl z-20 md:bottom-50">
                 <a
                     href={salvorLink}
                     target="_blank"

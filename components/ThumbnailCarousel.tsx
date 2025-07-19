@@ -66,11 +66,12 @@ export default function ThumbnailCarousel({ images, currentIndex, onSelect }: Pr
                             src={src}
                             alt={`Thumbnail ${idx + 1}`}
                             onClick={() => onSelect(idx)}
-                            className={`h-36 w-auto rounded-md cursor-pointer border transition-all duration-150
-                ${idx === currentIndex
+                            className={`h-24 sm:h-36 w-auto rounded-md cursor-pointer border transition-all duration-150
+    ${idx === currentIndex
                                     ? 'border-amber-600 shadow-md'
                                     : 'opacity-70 hover:opacity-100 border-transparent'}`}
                         />
+
                     ))}
                 </div>
             </div>
