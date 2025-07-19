@@ -51,7 +51,7 @@ export default function ThumbnailCarousel({ images, currentIndex, onSelect }: Pr
                         alt={`Thumbnail ${idx + 1}`}
                         onClick={() => onSelect(idx)}
                         className={`h-36 w-auto rounded cursor-pointer transition-all duration-150 
-              ${idx === currentIndex ? 'ring-2 ring-white scale-105' : 'opacity-70 hover:opacity-100'}`}
+              ${idx === currentIndex ? '' : 'opacity-70 hover:opacity-100'}`}
                     />
                 ))}
             </div>
