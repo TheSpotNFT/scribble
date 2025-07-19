@@ -38,7 +38,7 @@ export default function ThumbnailCarousel({ images, currentIndex, onSelect }: Pr
     };
 
     return (
-        <div className="absolute bottom-0 left-0 w-full bg-white/80 backdrop-blur z-30 px-4 py-3">
+        <div className="absolute bottom-0 left-0 w-full bg-black backdrop-blur z-30 px-4 py-3">
             <div className="relative w-full">
                 {/* Left Hover Zone */}
                 <div
