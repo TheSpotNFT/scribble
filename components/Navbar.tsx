@@ -3,16 +3,17 @@ import Image from 'next/image'
 
 export default function Navbar() {
     return (
-        <nav className="bg-black text-white px-4 py-3 flex items-center justify-between shadow-md h-20 pl-8">
-            <Link href="/" className="flex items-center gap-2">
+        <nav className="fixed top-0 left-0 w-full z-50
+                        bg-black text-white px-4 py-3
+                        flex items-center justify-between shadow-2xl h-20 pl-8">
+            <Link href="/" className="flex items-center gap-2 h-full">
                 <Image
                     src="/scribble-white.png"
                     alt="Home"
-                    width={128}
-                    height={72}
-                    className="h-full w-auto object-contain"
+                    width={148}
+                    height={12}
+                    className="h-3/5 w-auto object-contain"
                 />
-
             </Link>
             <div className="flex gap-6 text-sm sm:text-base">
                 <Link href="/irl" className="hover:underline">IRL</Link>
@@ -26,7 +27,6 @@ export default function Navbar() {
                 >
                     SUBS
                 </a>
-
             </div>
         </nav>
     )
