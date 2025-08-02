@@ -5,7 +5,11 @@ module.exports = {
     "./components/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      cursor: {
+        custom: 'url("/cursors/CHROMAPHAGE.PNG"), auto',
+      },
+    },
   },
   plugins: [
     require('tailwind-scrollbar-hide'),
