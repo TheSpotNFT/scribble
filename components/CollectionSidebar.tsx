@@ -15,7 +15,7 @@ export default function CollectionTopbar({ current, onSelect }: Props) {
 
 
     const scrollRef = useRef<HTMLDivElement>(null);
-    const scrollInterval = useRef<NodeJS.Timeout | null>(null);
+    //const scrollInterval = useRef<NodeJS.Timeout | null>(null);
     const scrollSpeed = useRef(0);
     const scrollDirection = useRef<'left' | 'right' | null>(null);
     const animationFrame = useRef<number | null>(null);

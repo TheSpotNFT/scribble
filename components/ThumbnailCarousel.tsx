@@ -1,4 +1,5 @@
 import { useRef } from 'react';
+import Image from 'next/image';
 
 type Props = {
     images: string[];
@@ -16,7 +17,6 @@ export default function ThumbnailCarousel({ images, currentIndex, onSelect }: Pr
         const container = scrollRef.current;
         if (!container || !scrollDirection.current) return;
 
-        // Gradually increase speed up to a max value
         scrollSpeed.current = Math.min(scrollSpeed.current + 0.2, 8);
         const amount = scrollDirection.current === 'left' ? -scrollSpeed.current : scrollSpeed.current;
 
@@ -53,21 +53,16 @@ export default function ThumbnailCarousel({ images, currentIndex, onSelect }: Pr
     return (
         <div className="absolute bottom-0 left-0 w-full bg-black backdrop-blur z-30 px-4 py-6">
             <div className="relative w-full">
-                {/* Left Hover Zone */}
                 <div
                     className="hidden md:block absolute top-0 left-0 h-full w-10 z-10"
                     onMouseEnter={() => startScrolling('left')}
                     onMouseLeave={stopScrolling}
                 />
-
-                {/* Right Hover Zone */}
                 <div
                     className="hidden md:block absolute top-0 right-0 h-full w-10 z-10"
                     onMouseEnter={() => startScrolling('right')}
                     onMouseLeave={stopScrolling}
                 />
-
-                {/* Scrollable Thumbnails */}
                 <div
                     ref={scrollRef}
                     className="flex overflow-x-auto scrollbar-hidden min-w-full"
@@ -76,21 +71,23 @@ export default function ThumbnailCarousel({ images, currentIndex, onSelect }: Pr
                         {images.map((src, idx) => (
                             <div
                                 key={idx}
-                                className="h-24 sm:h-36 w-24 sm:w-36 overflow-hidden rounded-md shrink-0"
+                                className="h-24 sm:h-36 w-24 sm:w-36 relative overflow-hidden rounded-md shrink-0"
+                                onClick={() => onSelect(idx)}
                             >
-                                <img
+                                <Image
                                     src={src}
                                     alt={`Thumbnail ${idx + 1}`}
-                                    onClick={() => onSelect(idx)}
-                                    className={`w-full h-full object-cover cursor-pointer border transition-all duration-150 scale-200 ${idx === currentIndex
-                                        ? 'border-amber-600 shadow-md'
-                                        : 'opacity-70 hover:opacity-100 border-transparent'
+                                    fill
+                                    sizes="96px"
+                                    unoptimized
+                                    className={`object-cover cursor-pointer border transition-all duration-150 scale-200 ${idx === currentIndex
+                                            ? 'border-amber-600 shadow-md'
+                                            : 'opacity-70 hover:opacity-100 border-transparent'
                                         }`}
                                 />
                             </div>
                         ))}
                     </div>
-
                 </div>
             </div>
         </div>
