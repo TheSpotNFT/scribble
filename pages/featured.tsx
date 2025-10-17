@@ -1,38 +1,29 @@
 import { useState } from 'react';
 import { collections } from '../data/featured';
-//import CollectionSidebar from '../components/CollectionSidebar';
+// import CollectionSidebar from '../components/CollectionSidebar';
 import ThumbnailCarousel from '../components/ThumbnailCarousel';
 import Image from 'next/image';
 
-
 export default function Home() {
-    const [currentCollection, _setCurrentCollection] = useState(0);
+    // We never change collection now, so no setter:
+    const [currentCollection] = useState(0);
     const [currentImageIndex, setCurrentImageIndex] = useState(0);
     const [isImageLoaded, setIsImageLoaded] = useState(false);
 
     const collection = collections[currentCollection];
-    const currentItem = collection?.items?.[currentImageIndex];
-    const currentImage = currentItem?.image ?? '';
-    const salvorLink = currentItem?.link ?? '#'; // <-- uses prebuilt link
+    if (!collection || !collection.items?.length) return null;
 
-    // Reset fade when collection or image changes
-    {/*const handleImageChange = (collectionIndex: number, imageIndex: number = 0) => {
-        setIsImageLoaded(false);
-        setCurrentCollection(collectionIndex);
-        setCurrentImageIndex(imageIndex);
-    };*/}
+    const currentItem = collection.items[currentImageIndex] ?? collection.items[0];
+    const currentImage = currentItem?.image ?? '';
+    const salvorLink = currentItem?.link ?? '#';
 
     const handleThumbnailSelect = (index: number) => {
         setIsImageLoaded(false);
         setCurrentImageIndex(index);
     };
 
-    // Optional guard if data might be empty
-    if (!collection || !collection.items?.length) return null;
-
     return (
         <div className="relative w-full h-screen overflow-hidden bg-white">
-            {/* Fullscreen image with fade-in */}
             <Image
                 key={currentImage}
                 src={currentImage}
@@ -42,13 +33,12 @@ export default function Home() {
                 sizes="100vw"
                 onLoadingComplete={() => setIsImageLoaded(true)}
                 className={`object-contain absolute pt-20 inset-0 z-0 pointer-events-none select-none
-        transition-opacity duration-[2000ms] ease-in-out
-        ${isImageLoaded ? 'opacity-100' : 'opacity-0'}
-      `}
+          transition-opacity duration-[2000ms] ease-in-out
+          ${isImageLoaded ? 'opacity-100' : 'opacity-0'}
+        `}
                 style={{ paddingBottom: '12rem' }}
             />
 
-            {/* View on Salvor */}
             <div className="absolute bottom-44 right-12 text-black text-2xl z-20 md:bottom-55">
                 <a
                     href={salvorLink}
@@ -60,13 +50,11 @@ export default function Home() {
                 </a>
             </div>
 
-            {/* Thumbnails: feed images from items */}
             <ThumbnailCarousel
-                images={collection.items.map((i) => i.image)}
+                images={collection.items.map(i => i.image)}
                 currentIndex={currentImageIndex}
                 onSelect={handleThumbnailSelect}
             />
         </div>
     );
-
 }
