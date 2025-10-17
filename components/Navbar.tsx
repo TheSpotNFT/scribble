@@ -30,9 +30,9 @@ export default function Navbar() {
 
             {/* Desktop links */}
             <div className="hidden sm:flex gap-6 text-sm sm:text-base">
-                <Link href="/irl" className="hover:underline">IRL</Link>
+                <Link href="/featured" className="hover:underline">FEATURED</Link>
                 <Link href="/digi" className="hover:underline">DIGI</Link>
-                <Link href="/faq" className="hover:underline">FAQ</Link>
+                {/*<Link href="/faq" className="hover:underline">FAQ</Link>*/}
                 <a
                     href="https://www.patreon.com/ScribbleWarlock/"
                     target="_blank"

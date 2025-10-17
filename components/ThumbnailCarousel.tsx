@@ -1,11 +1,14 @@
 import { useRef } from 'react';
 import Image from 'next/image';
 
+type ImageItem = string | { image: string; url: string };
+
 type Props = {
-    images: string[];
+    images: ImageItem[];
     currentIndex: number;
     onSelect: (index: number) => void;
 };
+
 
 export default function ThumbnailCarousel({ images, currentIndex, onSelect }: Props) {
     const scrollRef = useRef<HTMLDivElement>(null);
@@ -68,25 +71,30 @@ export default function ThumbnailCarousel({ images, currentIndex, onSelect }: Pr
                     className="flex overflow-x-auto scrollbar-hidden min-w-full"
                 >
                     <div className="flex gap-8 min-w-max px-2">
-                        {images.map((src, idx) => (
-                            <div
-                                key={idx}
-                                className="h-24 sm:h-36 w-24 sm:w-36 relative overflow-hidden rounded-md shrink-0"
-                                onClick={() => onSelect(idx)}
-                            >
-                                <Image
-                                    src={src}
-                                    alt={`Thumbnail ${idx + 1}`}
-                                    fill
-                                    sizes="96px"
-                                    unoptimized
-                                    className={`object-cover cursor-pointer border transition-all duration-150 scale-200 ${idx === currentIndex
-                                            ? 'border-amber-600 shadow-md'
-                                            : 'opacity-70 hover:opacity-100 border-transparent'
-                                        }`}
-                                />
-                            </div>
-                        ))}
+                        {images.map((item, idx) => {
+                            const src = typeof item === 'string' ? item : item.image;
+
+                            return (
+                                <div
+                                    key={idx}
+                                    className="h-24 sm:h-36 w-24 sm:w-36 relative overflow-hidden rounded-md shrink-0"
+                                    onClick={() => onSelect(idx)}
+                                >
+                                    <Image
+                                        src={src}
+                                        alt={`Thumbnail ${idx + 1}`}
+                                        fill
+                                        sizes="96px"
+                                        unoptimized
+                                        className={`object-cover cursor-pointer border transition-all duration-150 scale-200 ${idx === currentIndex
+                                                ? 'border-amber-600 shadow-md'
+                                                : 'opacity-70 hover:opacity-100 border-transparent'
+                                            }`}
+                                    />
+                                </div>
+                            );
+                        })}
+
                     </div>
                 </div>
             </div>

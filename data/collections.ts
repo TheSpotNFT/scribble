@@ -9,11 +9,11 @@ export const collections = [
         }),
     },
     {
-        name: "Abstract",
-        baseUrl: "0x8f1e73aa735a33e3e01573665dc7ab66ddfba4b2", // Replace with real address if needed
-        images: Array.from({ length: 30 }, (_, i) => {
+        name: "TBWSY",
+        baseUrl: "0x79dcb4244123add7a82594c9b6c6c4d2da0e62c8", // Replace with real address if needed
+        images: Array.from({ length: 12 }, (_, i) => {
             const id = String(i + 1).padStart(3, '0');
-            return `/collections/abstract/${id}.png`;
+            return `/collections/TBWSY/${id}.png`;
 
         }),
     },

@@ -7,10 +7,7 @@ type Props = {
 
 export default function CollectionTopbar({ current, onSelect }: Props) {
     const collections = [
-        "Mind Matter", "Abstract", "TBWSY", "ICONS", "KINGSHIT",
-        "Toy Depot", "Banners", "Pact Of Scribble", "Peaches N Straws", "ISOTOPE",
-        "Transmissions", "Feelings", "Overload", "Guydidail", "Heart Tarts",
-        "Heart Tart Treats", "BFA"
+        "Mind Matter", "The Boy Who Sees Yellow"
     ];
 
 
