@@ -46,7 +46,7 @@ export default function Home() {
                     rel="noopener noreferrer"
                     className="whitespace-nowrap px-4 py-2 text-sm rounded-full transition-all duration-150 hover:bg-amber-300 bg-zinc-200"
                 >
-                    View on Salvor
+                    Scribble on Salvor
                 </a>
             </div>
 
