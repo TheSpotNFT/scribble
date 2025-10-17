@@ -56,7 +56,7 @@ export default function Navbar() {
             {/* Mobile dropdown */}
             {isOpen && (
                 <div className="absolute top-20 right-0 w-40 bg-zinc-900 border-t border-zinc-700 text-sm text-white px-4 py-3 space-y-2 text-center">
-                    <Link href="/irl" className="block hover:underline" onClick={() => setIsOpen(false)}>IRL</Link>
+
                     <Link href="/digi" className="block hover:underline" onClick={() => setIsOpen(false)}>DIGI</Link>
                     <Link href="/about" className="block hover:underline" onClick={() => setIsOpen(false)}>SHOP</Link>
                     <Link href="/about" className="block hover:underline" onClick={() => setIsOpen(false)}>ABOUT</Link>
