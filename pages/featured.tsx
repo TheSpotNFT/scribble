@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { collections } from '../data/featured';
-import CollectionSidebar from '../components/CollectionSidebar';
+//import CollectionSidebar from '../components/CollectionSidebar';
 import ThumbnailCarousel from '../components/ThumbnailCarousel';
 
 export default function Home() {
@@ -14,11 +14,11 @@ export default function Home() {
     const salvorLink = currentItem?.link ?? '#'; // <-- uses prebuilt link
 
     // Reset fade when collection or image changes
-    const handleImageChange = (collectionIndex: number, imageIndex: number = 0) => {
+    {/*const handleImageChange = (collectionIndex: number, imageIndex: number = 0) => {
         setIsImageLoaded(false);
         setCurrentCollection(collectionIndex);
         setCurrentImageIndex(imageIndex);
-    };
+    };*/}
 
     const handleThumbnailSelect = (index: number) => {
         setIsImageLoaded(false);
@@ -36,11 +36,11 @@ export default function Home() {
                 src={currentImage}
                 alt={`Artwork ${currentImageIndex + 1}`}
                 onLoad={() => setIsImageLoaded(true)}
-                className={`w-full h-full object-contain absolute pt-30 inset-0 z-0 pointer-events-none select-none 
+                className={`w-full h-full object-contain absolute pt-20 inset-0 z-0 pointer-events-none select-none 
           transition-opacity duration-[2000ms] ease-in-out 
           ${isImageLoaded ? 'opacity-100' : 'opacity-0'}
         `}
-                style={{ paddingBottom: '10rem' }}
+                style={{ paddingBottom: '12rem' }}
             />
 
             {/* View on Salvor */}

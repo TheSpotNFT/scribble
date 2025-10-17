@@ -32,7 +32,8 @@ export default function Navbar() {
             <div className="hidden sm:flex gap-6 text-sm sm:text-base">
                 <Link href="/featured" className="hover:underline">FEATURED</Link>
                 <Link href="/digi" className="hover:underline">DIGI</Link>
-                {/*<Link href="/faq" className="hover:underline">FAQ</Link>*/}
+                <Link href="/about" className="hover:underline">SHOP</Link>
+                <Link href="/about" className="hover:underline">ABOUT</Link>
                 <a
                     href="https://www.patreon.com/ScribbleWarlock/"
                     target="_blank"
@@ -57,7 +58,8 @@ export default function Navbar() {
                 <div className="absolute top-20 right-0 w-40 bg-zinc-900 border-t border-zinc-700 text-sm text-white px-4 py-3 space-y-2 text-center">
                     <Link href="/irl" className="block hover:underline" onClick={() => setIsOpen(false)}>IRL</Link>
                     <Link href="/digi" className="block hover:underline" onClick={() => setIsOpen(false)}>DIGI</Link>
-                    <Link href="/faq" className="block hover:underline" onClick={() => setIsOpen(false)}>FAQ</Link>
+                    <Link href="/about" className="block hover:underline" onClick={() => setIsOpen(false)}>SHOP</Link>
+                    <Link href="/about" className="block hover:underline" onClick={() => setIsOpen(false)}>ABOUT</Link>
                     <a
                         href="https://www.patreon.com/ScribbleWarlock/"
                         target="_blank"
