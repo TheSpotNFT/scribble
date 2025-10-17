@@ -30,7 +30,7 @@ export default function Navbar() {
 
             {/* Desktop links */}
             <div className="hidden sm:flex gap-6 text-sm sm:text-base">
-                <Link href="/featured" className="hover:underline">FEATURED</Link>
+                <Link href="/featured" className="hover:underline pb-4">FEATURED</Link>
                 <Link href="/digi" className="hover:underline">DIGI</Link>
                 <a
                     href="https://ooze.bigcartel.com/"
@@ -40,7 +40,7 @@ export default function Navbar() {
                 >
                     SHOP
                 </a>
-                <Link href="/about" className="hover:underline">ABOUT</Link>
+                <Link href="/about" className="hover:underline pt-4">ABOUT</Link>
                 <a
                     href="https://www.patreon.com/ScribbleWarlock/"
                     target="_blank"
