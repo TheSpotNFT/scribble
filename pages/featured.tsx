@@ -2,9 +2,11 @@ import { useState } from 'react';
 import { collections } from '../data/featured';
 //import CollectionSidebar from '../components/CollectionSidebar';
 import ThumbnailCarousel from '../components/ThumbnailCarousel';
+import Image from 'next/image';
+
 
 export default function Home() {
-    const [currentCollection, setCurrentCollection] = useState(0);
+    const [currentCollection, _setCurrentCollection] = useState(0);
     const [currentImageIndex, setCurrentImageIndex] = useState(0);
     const [isImageLoaded, setIsImageLoaded] = useState(false);
 
@@ -31,15 +33,18 @@ export default function Home() {
     return (
         <div className="relative w-full h-screen overflow-hidden bg-white">
             {/* Fullscreen image with fade-in */}
-            <img
+            <Image
                 key={currentImage}
                 src={currentImage}
                 alt={`Artwork ${currentImageIndex + 1}`}
-                onLoad={() => setIsImageLoaded(true)}
-                className={`w-full h-full object-contain absolute pt-20 inset-0 z-0 pointer-events-none select-none 
-          transition-opacity duration-[2000ms] ease-in-out 
-          ${isImageLoaded ? 'opacity-100' : 'opacity-0'}
-        `}
+                fill
+                priority
+                sizes="100vw"
+                onLoadingComplete={() => setIsImageLoaded(true)}
+                className={`object-contain absolute pt-20 inset-0 z-0 pointer-events-none select-none
+        transition-opacity duration-[2000ms] ease-in-out
+        ${isImageLoaded ? 'opacity-100' : 'opacity-0'}
+      `}
                 style={{ paddingBottom: '12rem' }}
             />
 
@@ -57,10 +62,11 @@ export default function Home() {
 
             {/* Thumbnails: feed images from items */}
             <ThumbnailCarousel
-                images={collection.items.map(i => i.image)} // <-- was collection.images
+                images={collection.items.map((i) => i.image)}
                 currentIndex={currentImageIndex}
                 onSelect={handleThumbnailSelect}
             />
         </div>
     );
+
 }

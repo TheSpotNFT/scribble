@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import Image from 'next/image';
 import { collections } from '../data/collections';
 import CollectionSidebar from '../components/CollectionSidebar';
 import ThumbnailCarousel from '../components/ThumbnailCarousel';
@@ -9,15 +10,17 @@ export default function Home() {
     const [isImageLoaded, setIsImageLoaded] = useState(false);
 
     const collection = collections[currentCollection];
-    const currentImage =
-        collection?.images?.[currentImageIndex] ?? collection?.images?.[0] ?? '';
 
-    const baseUrl = collection?.baseUrl ?? '';
+    if (!collection) return null; // guard
+
+    const currentImage =
+        collection.images?.[currentImageIndex] ?? collection.images?.[0] ?? '';
+
+    const baseUrl = collection.baseUrl ?? '';
     const salvorLink = baseUrl
         ? `https://salvor.io/collections/${baseUrl}/${currentImageIndex + 1}`
         : '#';
 
-    // Reset fade when collection or image changes
     const handleImageChange = (collectionIndex: number, imageIndex: number = 0) => {
         setIsImageLoaded(false);
         setCurrentCollection(collectionIndex);
@@ -32,15 +35,18 @@ export default function Home() {
     return (
         <div className="relative w-full h-screen overflow-hidden bg-white">
             {/* Fullscreen image with fade-in */}
-            <img
-                key={currentImage} // key forces React to treat as a new image
+            <Image
+                key={currentImage} // forces re-render on change
                 src={currentImage}
                 alt={`Artwork ${currentImageIndex + 1}`}
-                onLoad={() => setIsImageLoaded(true)}
-                className={`w-full h-full object-contain absolute pt-20 inset-0 z-0 pointer-events-none select-none 
-                    transition-opacity duration-[2000ms] ease-in-out 
-                    ${isImageLoaded ? 'opacity-100' : 'opacity-0'}
-                `}
+                fill
+                priority
+                sizes="100vw"
+                onLoadingComplete={() => setIsImageLoaded(true)}
+                className={`object-contain absolute pt-20 inset-0 z-0 pointer-events-none select-none 
+          transition-opacity duration-[2000ms] ease-in-out 
+          ${isImageLoaded ? 'opacity-100' : 'opacity-0'}
+        `}
                 style={{ paddingBottom: '12rem' }}
             />
 
