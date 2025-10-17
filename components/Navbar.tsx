@@ -61,30 +61,40 @@ export default function Navbar() {
             </button>
 
             {/* Mobile dropdown */}
-            {isOpen && (
-                <div className="absolute top-20 right-0 w-40 bg-zinc-900 border-t border-zinc-700 text-sm text-white px-4 py-3 space-y-2 text-center">
-                    <Link href="/featured" className="hover:underline pb-4">FEATURED</Link>
-                    <Link href="/digi" className="block hover:underline" onClick={() => setIsOpen(false)}>DIGI</Link>
-                    <a
-                        href="https://ooze.bigcartel.com/"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="hover:underline"
-                    >
-                        SHOP
-                    </a>
-                    <Link href="/about" className="block hover:underline pt-4" onClick={() => setIsOpen(false)}>ABOUT</Link>
-                    <a
-                        href="https://www.patreon.com/ScribbleWarlock/"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="block hover:underline"
-                        onClick={() => setIsOpen(false)}
-                    >
-                        SUBS
-                    </a>
-                </div>
-            )}
+{isOpen && (
+  <div className="absolute top-20 right-0 w-40 bg-zinc-900 border-t border-zinc-700 text-sm text-white py-3 text-center shadow-lg">
+    <div className="flex flex-col space-y-3">
+      <Link href="/featured" className="hover:underline" onClick={() => setIsOpen(false)}>
+        FEATURED
+      </Link>
+      <Link href="/digi" className="hover:underline" onClick={() => setIsOpen(false)}>
+        DIGI
+      </Link>
+      <a
+        href="https://ooze.bigcartel.com/"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="hover:underline"
+        onClick={() => setIsOpen(false)}
+      >
+        SHOP
+      </a>
+      <Link href="/about" className="hover:underline" onClick={() => setIsOpen(false)}>
+        ABOUT
+      </Link>
+      <a
+        href="https://www.patreon.com/ScribbleWarlock/"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="hover:underline"
+        onClick={() => setIsOpen(false)}
+      >
+        SUBS
+      </a>
+    </div>
+  </div>
+)}
+
         </nav>
     );
 }
