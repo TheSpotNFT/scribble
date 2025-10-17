@@ -4,7 +4,7 @@ import { collections } from '../data/featured';
 import ThumbnailCarousel from '../components/ThumbnailCarousel';
 
 export default function Home() {
-    const [currentCollection, setCurrentCollection] = useState(0);
+    //const [currentCollection, setCurrentCollection] = useState(0);
     const [currentImageIndex, setCurrentImageIndex] = useState(0);
     const [isImageLoaded, setIsImageLoaded] = useState(false);
 
