@@ -43,7 +43,7 @@ export default function Home() {
                 priority
                 sizes="100vw"
                 onLoadingComplete={() => setIsImageLoaded(true)}
-                className={`object-contain absolute pt-20 inset-0 z-0 pointer-events-none select-none 
+                className={`object-contain absolute pt-5 md:pt-20 inset-0 z-0 pointer-events-none select-none 
           transition-opacity duration-[2000ms] ease-in-out 
           ${isImageLoaded ? 'opacity-100' : 'opacity-0'}
         `}

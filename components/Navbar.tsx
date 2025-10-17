@@ -32,7 +32,14 @@ export default function Navbar() {
             <div className="hidden sm:flex gap-6 text-sm sm:text-base">
                 <Link href="/featured" className="hover:underline">FEATURED</Link>
                 <Link href="/digi" className="hover:underline">DIGI</Link>
-                <Link href="/about" className="hover:underline">SHOP</Link>
+                <a
+                    href="https://ooze.bigcartel.com/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hover:underline"
+                >
+                    SHOP
+                </a>
                 <Link href="/about" className="hover:underline">ABOUT</Link>
                 <a
                     href="https://www.patreon.com/ScribbleWarlock/"
@@ -56,9 +63,16 @@ export default function Navbar() {
             {/* Mobile dropdown */}
             {isOpen && (
                 <div className="absolute top-20 right-0 w-40 bg-zinc-900 border-t border-zinc-700 text-sm text-white px-4 py-3 space-y-2 text-center">
-
+                    <Link href="/featured" className="hover:underline">FEATURED</Link>
                     <Link href="/digi" className="block hover:underline" onClick={() => setIsOpen(false)}>DIGI</Link>
-                    <Link href="/about" className="block hover:underline" onClick={() => setIsOpen(false)}>SHOP</Link>
+                    <a
+                        href="https://ooze.bigcartel.com/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="hover:underline"
+                    >
+                        SHOP
+                    </a>
                     <Link href="/about" className="block hover:underline" onClick={() => setIsOpen(false)}>ABOUT</Link>
                     <a
                         href="https://www.patreon.com/ScribbleWarlock/"
